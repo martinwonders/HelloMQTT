@@ -1,1 +1,2 @@
 ROOT=.
+TARGET=K64F

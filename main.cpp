@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
 
     MQTT::Client<MQTTNetwork, Countdown> client(mqttNetwork);
 
-    const char* hostname = "m2m.eclipse.org";
+    const char* hostname = "192.168.1.136";
     int port = 1883;
     logMessage("Connecting to %s:%d\r\n", hostname, port);
     int rc = mqttNetwork.connect(hostname, port);
@@ -87,8 +87,8 @@ int main(int argc, char* argv[])
     MQTTPacket_connectData data = MQTTPacket_connectData_initializer;
     data.MQTTVersion = 3;
     data.clientID.cstring = "mbed-sample";
-    data.username.cstring = "testuser";
-    data.password.cstring = "testpassword";
+    //data.username.cstring = "testuser";
+    //data.password.cstring = "testpassword";
     if ((rc = client.connect(data)) != 0)
         logMessage("rc from MQTT connect is %d\r\n", rc);
 

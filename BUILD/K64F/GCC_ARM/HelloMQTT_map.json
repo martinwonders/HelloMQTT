@@ -1,0 +1,107 @@
+[
+    {
+        "module": "Fill", 
+        "size": {
+            ".data": 12, 
+            ".bss": 2116, 
+            ".text": 218
+        }
+    }, 
+    {
+        "module": "Misc", 
+        "size": {
+            ".data": 2478, 
+            ".bss": 297, 
+            ".text": 60577
+        }
+    }, 
+    {
+        "module": "drivers", 
+        "size": {
+            ".data": 0, 
+            ".bss": 32, 
+            ".text": 2144
+        }
+    }, 
+    {
+        "module": "features/FEATURE_COMMON_PAL", 
+        "size": {
+            ".data": 0, 
+            ".bss": 56, 
+            ".text": 60
+        }
+    }, 
+    {
+        "module": "features/FEATURE_LWIP", 
+        "size": {
+            ".data": 81, 
+            ".bss": 45756, 
+            ".text": 35974
+        }
+    }, 
+    {
+        "module": "features/netsocket", 
+        "size": {
+            ".data": 85, 
+            ".bss": 60, 
+            ".text": 4677
+        }
+    }, 
+    {
+        "module": "features/storage", 
+        "size": {
+            ".data": 0, 
+            ".bss": 184, 
+            ".text": 42
+        }
+    }, 
+    {
+        "module": "hal", 
+        "size": {
+            ".data": 0, 
+            ".bss": 8, 
+            ".text": 580
+        }
+    }, 
+    {
+        "module": "platform", 
+        "size": {
+            ".data": 4, 
+            ".bss": 297, 
+            ".text": 1875
+        }
+    }, 
+    {
+        "module": "rtos", 
+        "size": {
+            ".data": 4, 
+            ".bss": 4, 
+            ".text": 213
+        }
+    }, 
+    {
+        "module": "rtos/rtx", 
+        "size": {
+            ".data": 20, 
+            ".bss": 6870, 
+            ".text": 6961
+        }
+    }, 
+    {
+        "module": "targets/TARGET_Freescale", 
+        "size": {
+            ".data": 12, 
+            ".bss": 228, 
+            ".text": 10771
+        }
+    }, 
+    {
+        "summary": {
+            "total_flash": 127828, 
+            "static_ram": 58604, 
+            "stack": 0, 
+            "heap": 65540, 
+            "total_ram": 124144
+        }
+    }
+]
