@@ -3,24 +3,24 @@
         "module": "Fill", 
         "size": {
             ".data": 12, 
-            ".bss": 2116, 
-            ".text": 218
+            ".bss": 2576, 
+            ".text": 224
         }
     }, 
     {
         "module": "Misc", 
         "size": {
             ".data": 2478, 
-            ".bss": 297, 
-            ".text": 60577
+            ".bss": 313, 
+            ".text": 60271
         }
     }, 
     {
         "module": "drivers", 
         "size": {
             ".data": 0, 
-            ".bss": 32, 
-            ".text": 2144
+            ".bss": 64, 
+            ".text": 2442
         }
     }, 
     {
@@ -68,7 +68,7 @@
         "size": {
             ".data": 4, 
             ".bss": 297, 
-            ".text": 1875
+            ".text": 1903
         }
     }, 
     {
@@ -91,17 +91,17 @@
         "module": "targets/TARGET_Freescale", 
         "size": {
             ".data": 12, 
-            ".bss": 228, 
-            ".text": 10771
+            ".bss": 232, 
+            ".text": 13356
         }
     }, 
     {
         "summary": {
-            "total_flash": 127828, 
-            "static_ram": 58604, 
+            "total_flash": 130439, 
+            "static_ram": 59116, 
             "stack": 0, 
             "heap": 65540, 
-            "total_ram": 124144
+            "total_ram": 124656
         }
     }
 ]

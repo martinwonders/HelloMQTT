@@ -48,18 +48,13 @@ C12832 lcd(LCD_MOSI, LCD_SCK, LCD_MISO, LCD_A0, LCD_NCS);
 #include "MQTTNetwork.h"
 #include "MQTTmbed.h"
 #include "MQTTClient.h"
+#include "LM75B.h" //temperature sensor library need: 'mbed add https://os.mbed.com/users/chris/code/LM75B/'
+
+LM75B temp_sensor(D14,D15); //set up the sensor and name it temp_sensor
 
 int arrivedcount = 0;
 
-
-void messageArrived(MQTT::MessageData& md)
-{
-    MQTT::Message &message = md.message;
-    logMessage("Message arrived: qos %d, retained %d, dup %d, packetid %d\r\n", message.qos, message.retained, message.dup, message.id);
-    logMessage("Payload %.*s\r\n", message.payloadlen, (char*)message.payload);
-    ++arrivedcount;
-}
-
+void messageArrived(MQTT::MessageData& md);
 
 int main(int argc, char* argv[])
 {
@@ -97,8 +92,8 @@ int main(int argc, char* argv[])
 
     MQTT::Message message;
 
-    // QoS 0
-    char buf[100];
+    //the buffer to store the data
+    char buf[100];							
     sprintf(buf, "Hello World!  QoS 0 message from app version %f\r\n", version);
     message.qos = MQTT::QOS0;
     message.retained = false;
@@ -121,11 +116,31 @@ int main(int argc, char* argv[])
     sprintf(buf, "Hello World!  QoS 2 message from app version %f\r\n", version);
     message.qos = MQTT::QOS2;
     message.payloadlen = strlen(buf)+1;
-    rc = client.publish(topic, message);
+    rc = client.publish(topic, message); 
     while (arrivedcount < 3)
         client.yield(100);
 
+    //create a variable for the temperature data
+    float temp = 0.0;
+    
+    //publish the value of the temperature sensor to the sensors/mw_board1/temperature topic
+    char* topic2 = "sensors/mw_board1/temperature";
+    
+    
+    //set up a loop to send the sensor data
+    while(true) {
+        temp = temp_sensor.read(); 			//get the sensor reading
+        printf("pub: %.2f to %s\r\n", temp, topic2);  	//print something to sanity check
+        sprintf(buf, "%.2f\n", temp);			//write the reading to the buffer
+        message.payloadlen = strlen(buf)+1;		//set the payload length
+        rc = client.publish(topic2, message);        	//publish the message
+        wait(5); 					//publish every 5 seconds
+    }
+
     if ((rc = client.unsubscribe(topic)) != 0)
+        logMessage("rc from unsubscribe was %d\r\n", rc);
+
+    if ((rc = client.unsubscribe(topic2)) != 0)
         logMessage("rc from unsubscribe was %d\r\n", rc);
 
     if ((rc = client.disconnect()) != 0)
@@ -137,3 +152,12 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+
+void messageArrived(MQTT::MessageData& md)
+{
+    MQTT::Message &message = md.message;
+    logMessage("Message arrived: qos %d, retained %d, dup %d, packetid %d\r\n", message.qos, message.retained, message.dup, message.id);
+    logMessage("Payload %.*s\r\n", message.payloadlen, (char*)message.payload);
+    ++arrivedcount;
+}
+

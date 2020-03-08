@@ -112,4 +112,4 @@ BUILD/K64F/GCC_ARM/./main.o: main.cpp BUILD/K64F/GCC_ARM/mbed_config.h \
  MQTT/MQTTPacket/MQTTPublish.h MQTT/MQTTPacket/MQTTSubscribe.h \
  MQTT/MQTTPacket/MQTTUnsubscribe.h MQTT/MQTTPacket/MQTTFormat.h \
  MQTT/MQTTPacket/StackTrace.h MQTT/MQTTPacket/MQTTPacket.h \
- MQTT/MQTTLogging.h
+ MQTT/MQTTLogging.h LM75B/LM75B.h
