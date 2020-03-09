@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
 
     MQTT::Client<MQTTNetwork, Countdown> client(mqttNetwork);
 
-    const char* hostname = "192.168.1.136";
+    const char* hostname = "192.168.1.89";
     int port = 1883;
     logMessage("Connecting to %s:%d\r\n", hostname, port);
     int rc = mqttNetwork.connect(hostname, port);
